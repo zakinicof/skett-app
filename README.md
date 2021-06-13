@@ -33,12 +33,15 @@
 
 ## postsテーブル
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| match_date    | date    | null: false |
-| place         | string  | null: false |
-| recruit_count | integer | null: false |
-| content       | text    | null: false |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| title              | string     | null: false                    |
+| match_date         | date       | null: false                    |
+| match_site         | string     | null: false                    |
+| prefecture_code_id | integer    | null: false                    |
+| recruit_count      | integer    | null: false                    |
+| content            | text       | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to: user

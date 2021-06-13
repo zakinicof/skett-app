@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  match_date: 2021-06-13
+  match_site: MyString
+  prefecture_code_id: 1
+  recruit_count: 1
+  content: MyText
+  user: one
+
+two:
+  match_date: 2021-06-13
+  match_site: MyString
+  prefecture_code_id: 1
+  recruit_count: 1
+  content: MyText
+  user: two
