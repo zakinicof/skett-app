@@ -1,0 +1,90 @@
+<div class="items-sell-contents">
+  <header class="items-sell-header">
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+
+  </header>
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">募集内容を入力</h2>
+    <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: f.object %>
+
+    <div class="new-items">
+      <div class="weight-bold-text">
+        タイトル
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :title, class:"items-text", id:"item-name", placeholder:"募集タイトル（必須 40文字まで)", maxlength:"40" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          募集内容
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :content, class:"items-text", id:"item-info", placeholder:"募集内容（必須 1,000文字まで）例）１名欠員が出てしまったため急遽募集いたします。" ,rows:"7" ,maxlength:"1000" %>
+      </div>
+      <div>
+        <div class="weight-bold-text">
+          募集人数
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.select :recruit_count, [["1名", 1], ["2名", 2], ["3名", 3]], include_blank: "選択して下さい" %>
+      </div>
+    </div>
+
+    <div class="new-items">
+      <div class='form-text-wrap'>
+        <label class="form-text">試合日時</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <div class='input-birth-wrap'>
+        <%= raw sprintf(
+          f.date_select(
+            :match_date,
+            class:'select-birth',
+            id:"match-date",
+            use_month_numbers: true,
+            prompt:'--',
+            start_year: (Time.now.year),
+            end_year: (Time.now.year + 1),
+            date_separator: '%s'),
+          "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      </div>
+    </div>
+
+    <div class="items-detail">
+      <div class="form">
+        <div class="weight-bold-text">
+          場所の情報
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:prefecture_code_id, PrefectureCode.all, :id, :name, {}, {class:"select-box", id:"item-prefecture"}) %>
+      </div>
+    </div>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        球場名
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :match_site, class:"items-text", id:"item-name", placeholder:"例）福岡PayPayドーム", maxlength:"40" %>
+    </div>
+
+    <div class="sell-btn-contents">
+      <%= f.submit "投稿する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+
+  </div>
+  <% end %>
+
+  <footer class="items-sell-footer">
+    <ul class="menu">
+      <li><a href="#">プライバシーポリシー</a></li>
+      <li><a href="#">フリマ利用規約</a></li>
+      <li><a href="#">特定商取引に関する表記</a></li>
+    </ul>
+    <%= link_to image_tag('furima-logo-color.png' , size: '185x50'), "/" %>
+    <p class="inc">
+      ©︎Furima,Inc.
+    </p>
+  </footer>
+</div>
