@@ -6,8 +6,12 @@ class User < ApplicationRecord
   has_many :posts
 
   with_options presence: true do
-    validates :email, uniqueness: true, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "には@を含めてください" }
-    validates :nickname
+    with_options uniqueness: true do
+      validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "には@を含めてください" }
+      validates :nickname, length: { maximum: 40 }
+    end
+    
+    
     validates :birthday
   end
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze

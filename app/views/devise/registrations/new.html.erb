@@ -70,6 +70,22 @@
       <p class='info-text'>※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。</p>
     </div>
     <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">登録区分</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="form-radio-button">
+        <div class="is-manager">
+        <%= f.radio_button :is_manager, :true %>
+        <%= f.label :is_manager, "チーム管理者", value: true %>
+        </div>
+        <div class="is-manager">
+        <%= f.radio_button :is_manager, :false %>
+        <%= f.label :is_manager, "助っ人", value: false, checked: true %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
       <h2 class='form-bottom-text'>
         「会員登録」のボタンを押すことにより、
         <span>利用規約</span>

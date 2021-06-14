@@ -153,3 +153,8 @@
   text-align: right;
   cursor: pointer;
 }
+
+.form-radio-button {
+  display:flex;
+  justify-content: space-around;
+}
